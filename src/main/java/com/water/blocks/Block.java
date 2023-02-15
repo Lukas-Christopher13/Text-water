@@ -1,13 +1,28 @@
 package com.water.blocks;
 
-import java.util.Set;
+public abstract class Block {
 
-public interface Block {
-    public void drawnBlock();
-    public void setXy(int x, int y);
-    public void startEvent();
-    //public void setPositionOfDownBlcock(Block block);
-    public void setGrid(BlockGrid grid);
-    public void setGridAdress(Block blockAdress);
+    protected char skin;
+    
+    @Override
+    public boolean equals(Object object){
+        if(object == this){
+            return true;
+        }
+        if(!(object instanceof Block)){
+            return false;
+        }
+        Block block = (Block)object;
+    
+        if(this.skin != block.skin){
+            return false;
+        }
+        return true;
+    }
 
+    public char getSkin(){
+        return skin;
+    }
+
+    abstract public void drawnBlock();
 }

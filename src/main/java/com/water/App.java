@@ -1,9 +1,9 @@
 package com.water;
 
 import com.water.blocks.Block;
-import com.water.blocks.BlockGrid;
 import com.water.blocks.WaterBlock;
-import com.water.LoadGrid;
+import com.water.grid.Grid;
+import com.water.grid.LoadGrid;
 /**
  * Hello world!
  *
@@ -12,13 +12,11 @@ public class App
 {
     public static void main( String[] args )
     {
-       BlockGrid teste = new BlockGrid();
+       Grid teste = new Grid();
        Block sdf = new WaterBlock();
-       sdf.setGrid(teste);
 
        LoadGrid loadGrid = new LoadGrid(teste);
-       loadGrid.reader("/water/teste.txt");
-       teste.setBlockPosition();
+       loadGrid.LoadGridWithUserFile("/water/teste.txt");
     
 
        System.out.print("\033[H\033[2J");
