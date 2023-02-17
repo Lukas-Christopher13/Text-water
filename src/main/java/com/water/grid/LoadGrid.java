@@ -8,13 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class LoadGrid {
-    private Grid grid;
     
-    public LoadGrid(Grid grid){
-        this.grid = grid;
-    }
-
-    public void LoadGridWithUserFile(String path){
+    public static void withUserFile(String path){
         try{
             //remover a string do path
             tryLoadGridWithTexTFile("teste.txt");
@@ -25,12 +20,14 @@ public class LoadGrid {
         }
     }
 
-    private void tryLoadGridWithTexTFile(String path) throws IOException{
+    private static void tryLoadGridWithTexTFile(String path) throws IOException{
         ArrayList<String> fileSkinLines = FileFunctios.readAllLinesFromBuffer(FileFunctios.openFile(path));
         
+        int colum = 0;
         for(String skinLine : fileSkinLines){
-            GridLine blockLine = GridLine.GridLineLoadBlocksFactore(skinLine);
-            grid.addLine(blockLine);
+            GridLine blockLine = GridLineFactory.loadLineWithText(skinLine, colum);
+            Grid.addLine(blockLine);
+            colum++;
         }        
-    }
+    }    
 }

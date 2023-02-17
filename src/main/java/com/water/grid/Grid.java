@@ -3,30 +3,43 @@ package com.water.grid;
 import java.util.ArrayList; 
 
 import com.water.blocks.Block;
+import com.water.grid.LoadGrid;
 
 public class Grid {
 
-    private ArrayList<GridLine> grid;
+    public static ArrayList<GridLine> array;
+    public static ArrayList<Block> endLine;
+    public static int columSize;
+    public static int rowSize;
 
-    public Grid(){
-        grid = new ArrayList<>();
+    public Grid(String filePath){
+        array = new ArrayList<>();
+
+        LoadGrid.withUserFile(filePath);
+
+        columSize = array.size();
+        rowSize = array.get(0).array.size();
     }
-    
-    public void printScreen(){
-        for(int i = 0; i < grid.size(); i++){
-            for(int j = 0; j < grid.get(0).lineSize(); j++){
-                grid.get(i).getBlock(j).drawnBlock();
+
+    //train
+    public static void printScreen(){
+        for(int colum = 0; colum < array.size(); colum++){
+            for(int row = 0; row < array.get(0).array.size(); row++){
+                getGridBlock(colum, row).drawnBlock();
             }
             System.out.println();
         }
     }
-
-    public void addLine(GridLine blockLine){
-        grid.add(blockLine);
+ 
+    public static void setBlock(Block block, int colum, int row){
+        array.get(colum).array.set(row, block);
     }
 
-    public Block getGridBlock(int row, int colun){
-        return grid.get(row).getBlock(colun);
+    public static void addLine(GridLine blockLine){
+        array.add(blockLine);
     }
 
+    public static Block getGridBlock(int colum, int row){
+        return array.get(colum).array.get(row);
+    }
 }

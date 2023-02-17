@@ -16,9 +16,9 @@ public class BlockEqulasTeste {
 
     @Before
     public void initData(){
-        waterBlock = new WaterBlock();
-        solidBlock = new SolidBlock();
-        otherSolidBlock = new SolidBlock();
+        waterBlock = new WaterBlock(0,0);
+        solidBlock = new SolidBlock(0,0);
+        otherSolidBlock = new SolidBlock(0,0);
         diferentInstance = "not same";
     }
 

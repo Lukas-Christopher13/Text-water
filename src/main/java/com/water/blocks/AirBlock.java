@@ -2,7 +2,8 @@ package com.water.blocks;
 
 public class AirBlock extends Block{
 
-    public AirBlock(){
+    public AirBlock(int colum, int row){
+        super(colum ,row);
         super.skin = ' ';
     }
 

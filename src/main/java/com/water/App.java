@@ -1,33 +1,23 @@
 package com.water;
 
-import com.water.blocks.Block;
-import com.water.blocks.WaterBlock;
 import com.water.grid.Grid;
-import com.water.grid.LoadGrid;
-/**
- * Hello world!
- *
- */
+
 public class App 
 {
     public static void main( String[] args )
     {
-       Grid teste = new Grid();
-       Block sdf = new WaterBlock();
-
-       LoadGrid loadGrid = new LoadGrid(teste);
-       loadGrid.LoadGridWithUserFile("/water/teste.txt");
-    
-
-       System.out.print("\033[H\033[2J");
-
+      
+       Grid grid = new Grid("teste.txt");
 
        while(true){
-        teste.printScreen();
+        
+        Grid.printScreen();
         try{
-            Thread.sleep(1000);
+            Thread.sleep(200);
         }catch(InterruptedException ex) {}
         System.out.print("\033[H\033[2J");
+
+
        }
     }
 }

@@ -10,23 +10,18 @@ import com.water.blocks.SolidBlock;
 import com.water.blocks.WaterBlock;
 import com.water.blocks.AirBlock;
 
+import com.water.grid.GridLineFactory;
+
 public class GridLineTeste {
 
     private final String skinLine = "#^ ";
     private GridLine gridLineFactorie;
-    private GridLine expectedGridLine;
-
-    @Before
-    public void initFunction(){
-        this.expectedGridLine = new GridLine();
-        expectedGridLine.addBlock(new SolidBlock());
-        expectedGridLine.addBlock(new WaterBlock());
-        expectedGridLine.addBlock(new AirBlock());
-    }
 
     @Test
     public void GridLineLoadBlocksFactoreTeste(){
-        this.gridLineFactorie = GridLine.GridLineLoadBlocksFactore(skinLine);
-        assertTrue(expectedGridLine.equals(gridLineFactorie));
+        gridLineFactorie = GridLineFactory.loadLineWithText(skinLine, 0);
+        assertTrue((gridLineFactorie.array.get(0) instanceof SolidBlock));
+        assertTrue((gridLineFactorie.array.get(1) instanceof WaterBlock));
+        assertTrue((gridLineFactorie.array.get(2) instanceof AirBlock));
     }
 }

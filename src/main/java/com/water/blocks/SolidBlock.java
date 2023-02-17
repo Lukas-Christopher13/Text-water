@@ -2,7 +2,8 @@ package com.water.blocks;
 
 public class SolidBlock extends Block{
 
-    public SolidBlock(){
+    public SolidBlock(int colum, int row){
+        super(colum ,row);
         super.skin = '#';
     }
 
